@@ -1,2 +1,24 @@
-<h1>Bookers#index</h1>
-<p>Find me in app/views/bookers/index.html.erb</p>
+<body>
+<h1>Books</h1>
+
+  <main>
+<%= @bookers.each do |booker| %>
+    <table>
+      <h4>Tilte</h4>
+        <span><%= booker.title %></span>
+
+      <h4>Body</h4>
+        <span><%= booker.body %></span>
+
+      <ul>
+        <li class="show"><%= link_to "Show", booker_path(@booker.id) %></li>
+        <li class="edit"><%= link_to "Edit", edit_booker_path(@booker.id) %></li>
+        <li class="destroy"><%= link_to "Destroy", destroy_booker_path(@booker.id), method: :delete, "data-config" => "Are you sure?" %></li>
+      </ul>
+    </table>
+<% end %>
+  </main>
+
+
+
+</body>
