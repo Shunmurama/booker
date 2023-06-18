@@ -1,14 +1,33 @@
 <h1>Editing Book</h1>
 
+  <% if @booker.errors.any? %>
+   <div class="error-box">
+    <h4 class="error-text"><%= @booker.errors.count %>errors prohibited this book from being saved:</h4>
+    <ul class="error">
+      <% @booker.errors.full_messages.each do |message| %>
+       <li class="error-messages"><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
 <%= form_with model: @booker do |f| %>
 
-<h4>Title</h4>
-<%= f.text_area :title %>
+<div class="edit-box">
+ <h4 class="edit-title">Title</h4>
+  <div class="edit-text"><%= f.text_field:title %></div>
 
-<h4>Body</h4>
-<%= f.text_field :body %>
+ <h4 class="edit-body">Body</h4>
+  <div class="edit-text"><%= f.text_area:body %> </div>
 
-<%= f.submit 'Update Book' %>
+   <div class="update"><%= f.submit ' Update Book ' %></div>
 
-show back
+</div>
+
+ <div class="botan">
+ <a class="to-show"><%= link_to "Show", booker_path(@booker.id) %></a>
+ |
+ <a class="back"><%= link_to "Back", "/bookers" %></a>
+ </div>
+
 <% end %>

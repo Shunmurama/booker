@@ -35,6 +35,12 @@ p{
   display:block;
 }
 
+.flash{
+  margin-top: 30px;
+  margin-left: 70px;
+  color: green;
+}
+
 .title-box{
   display: flex;
   margin-top:30px;
@@ -82,4 +88,83 @@ p{
 .to-index{
   mragin-left:5px;
   text-align: left;
+}
+
+.edit-box{
+  display: block;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.edit-body{
+  margin-top: 10px;
+}
+
+.update{
+  margin-top: 10px;
+}
+
+.to-show{
+  margin-left: 30px;
+  text-align: left;
+}
+
+.back{
+  mragin-left:5px;
+  text-align: left;
+}
+
+.new-title{
+  margin-left: 30px;
+}
+
+.new-title-name{
+  margin-left: 30px;
+}
+
+.new-body{
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.new-body-text{
+  margin-left: 30px;
+}
+
+.submit-botun{
+  margin-left: 30px;
+}
+
+table{
+  margin-left: 30px;
+}
+
+thead{
+  display:flex;
+}
+
+table,tr,td{
+  width: auto !important;
+}
+
+ul{
+  display: flex;
+  list-style: none;
+}
+
+li{
+  margin-right: 10px;
+}
+
+.error-box{
+  margin-left: 30px;
+}
+
+.error{
+  display: inline;
+}
+
+.error-messages{
+  list-style: disc;
+  margin-left:50px;
 }

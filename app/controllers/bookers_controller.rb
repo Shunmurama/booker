@@ -15,6 +15,7 @@ class BookersController < ApplicationController
 
   def index
     @bookers = Booker.all
+    @booker = Booker.new
   end
 
   def show
@@ -26,9 +27,13 @@ class BookersController < ApplicationController
   end
 
   def update
-    booker = Booker.find(params[:id])
-    booker.update(booker_params)
-    redirect_to booker_path(booker.id)
+    @booker = Booker.find(params[:id])
+    if @booker.update(booker_params)
+      flash[:notice] = "Book was successfully updated."
+      redirect_to booker_path(booker.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

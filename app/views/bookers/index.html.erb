@@ -1,23 +1,62 @@
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+
 <body>
 <h1>Books</h1>
 
+<% @bookers.each do |booker| %>
   <main>
-<%= @bookers.each do |booker| %>
+    <div class="index-all">
     <table>
-      <h4>Tilte</h4>
-        <span><%= booker.title %></span>
+      <thead>
+       <tr>
+        <td><h4>Title</h4></td>
+        <td><h4>Body</h4></td>
+       </tr>
+      </thead>
 
-      <h4>Body</h4>
-        <span><%= booker.body %></span>
+      <tbody>
+       <tr>
+        <td><span><%= booker.title %></span></td>
+        <td><span><%= booker.body %></span></td>
+       </tr>
+      </tbody>
+    </table>
 
       <ul>
-        <li class="show"><%= link_to "Show", booker_path(@booker.id) %></li>
-        <li class="edit"><%= link_to "Edit", edit_booker_path(@booker.id) %></li>
-        <li class="destroy"><%= link_to "Destroy", destroy_booker_path(@booker.id), method: :delete, "data-config" => "Are you sure?" %></li>
+        <li class="show"><%= link_to "Show", "/bookers/#{booker.id}" %></li>
+        <li class="edit"><%= link_to "Edit", edit_booker_path(booker.id) %></li>
+        <li class="destroy"><%= link_to "Destroy", booker_path(booker.id), method: :delete, data: {confirm: "Are you sure?"} %></li>
       </ul>
-    </table>
+
+      </div>
+
+
 <% end %>
   </main>
+
+
+  <h1>New book</h1>
+  <% if @booker.errors.any? %>
+    <%= @booker.errors.count %>errors prohibited this book from being saved:
+    <ul>
+      <% @booker.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: @booker, url: '/bookers',method: :post do |f| %>
+
+  <h4 class="new-title">Title</h4>
+  <div class="new-title-name"><%= f.text_field :title %></div>
+
+  <h4 class="new-body">Body</h4>
+  <div class="new-body-text"><%= f.text_area :body %></div>
+
+  <div class="submit-botun"><%= f.submit " Create Book " %></div>
+<% end %>
 
 
 
